@@ -1,0 +1,9 @@
+
+body{
+    background: #e3ebe7;
+margin: 10px auto;
+}
+.border{
+    margin: 25px 0;
+    border-bottom: 10px dotted blue;
+}
