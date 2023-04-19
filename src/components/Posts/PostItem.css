@@ -1,0 +1,62 @@
+.container{
+    background: white;
+    display: flex;
+    justify-content: space-between;
+    min-height: 300px;
+    width: 650px;
+    margin: 20px 5px;
+    border: 4px dotted red;
+}
+
+
+.description{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin: 10px 8px;
+    width: 50%;
+}
+
+
+
+.title{
+    font-size: 30px;
+    font-style: italic;
+
+}
+
+.photo{
+    width: 50%;
+    margin: 10px 10px;
+}
+.photo>img{
+    width: 300px;
+    height: 310px;
+}
+
+.number{
+    color: blueviolet;
+    font-size: 35px;
+}
+
+.wrapper_button{
+    display: flex;
+}
+
+.button {
+    width: 270px;
+    font: inherit;
+    cursor: pointer;
+    margin-right: 5px;
+    padding: 7px 10px;
+    border: 2px solid black;
+background: white;
+    color: blueviolet;
+    font-weight: 700;
+
+}
+
+button:hover,
+button:active {
+    background-color: red;
+}
