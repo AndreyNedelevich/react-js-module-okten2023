@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
-import Post from "../post/Post";
 import {Outlet} from "react-router-dom";
 
+import Post from "../post/Post";
 const Posts = () => {
 
     let [posts, setPosts] = useState([]);

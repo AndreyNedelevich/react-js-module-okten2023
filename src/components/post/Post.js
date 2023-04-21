@@ -3,7 +3,6 @@ import {useNavigate} from "react-router-dom";
 
 const Post = ({item}) => {
 
-
     let navigate = useNavigate();
 
     return (

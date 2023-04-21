@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
-import User from "../user/User";
 import {Outlet} from "react-router-dom";
+
+import User from "../user/User";
 
 const Users = () => {
     let [users, setUsers] = useState([]);

@@ -10,9 +10,9 @@ import PostDetails from "./components/post-details/PostDetails";
 import Todos from "./components/Todos/Todos";
 import Albums from "./components/Albums/Albums";
 import Comments from "./components/Comments/Comments";
-import "./App.css"
 import PostInfo from "./components/Comments/PostInfo";
-import Comment from "./components/Comments/Comment";
+import "./App.css"
+
 
 const App = () => {
     // сделай еще небольшую правку в lesson4:
@@ -68,14 +68,13 @@ const App = () => {
                             <Route path={':id'} element={<PostDetails/>} />
                         </Route>
                         <Route path={'comments'} element={<Comments/>}>
-                            {/*<Route path={':Id'} element={<Comment/>} />*/}
+                            <Route path={':Id'} element={<PostInfo/>} />
                         </Route>
                     </Route>
                     <Route path={'todos'} element={<Todos/>}/>
                     <Route path={'albums'} element={<Albums/>}/>
                     <Route path={'/about'} element={<About/>}/>
                 </Routes>
-
             </div>
         </div>
     );

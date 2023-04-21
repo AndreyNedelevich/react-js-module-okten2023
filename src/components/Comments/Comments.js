@@ -1,8 +1,9 @@
 import React, {useEffect, useState} from 'react';
 import axios from "axios";
+import {Outlet} from "react-router-dom";
 
 import Comment from "./Comment";
-import {Outlet} from "react-router-dom";
+
 
 const Comments = () => {
 

@@ -5,25 +5,24 @@ import {useParams} from "react-router-dom";
 
 const PostInfo = () => {
 
-    let {postId} = useParams();
+    let {Id} = useParams();
     let [post, setPost] = useState(null);
-    useEffect(() => {
 
-        fetch('https://jsonplaceholder.typicode.com/posts/' + postId)
+    useEffect(() => {
+        fetch('https://jsonplaceholder.typicode.com/posts/' + Id)
             .then(value => value.json())
             .then(value => {
                 setPost({...value});
             });
-    }, [postId]);
+    }, [Id]);
 
 
 
     return (
         post &&
-        <div>
+        <div className='postInfo'>
         <div>id: {post.id}</div>
-        <div>name: {post.name}</div>
-        <div>email: {post.email}</div>
+        <div>title: {post.title}</div>
         <div>body: {post.body}</div>
     </div>
 
