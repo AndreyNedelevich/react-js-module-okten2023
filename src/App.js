@@ -10,6 +10,7 @@ const App = () => {
         <div>
             <Posts/>
             <Launches/>
+
             {/*<Users setUserId={setUserId}/>*/}
             {/*{userId && <UserPosts userId={userId}/>}*/}
         </div>
