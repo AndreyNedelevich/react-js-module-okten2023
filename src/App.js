@@ -1,11 +1,20 @@
-import './App.css';
+import {Button} from "./Button/Button";
+import {useContext} from "react";
+import {Context} from "./index";
+import {First} from "./First";
 
-function App() {
-  return (
-    <div >
-
-    </div>
-  );
-}
+const App = () => {
+    const context = useContext(Context);
+    context.users = ['max', 'kokos', 'kesha']
+    return (
+        <div>
+            {/*<Button bgColor={'red'} styles={{color:'blue'}} height={'50px'} id={1234}>*/}
+            {/*    save*/}
+            {/*</Button>*/}
+            {/*<Button bgColor={'black'} styles={{color:'snow'}}>update</Button>*/}
+            <First/>
+        </div>
+    );
+};
 
 export default App;
