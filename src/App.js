@@ -1,6 +1,8 @@
 import {useEffect, useReducer} from "react";
 
 const reducer = (state, action) => {
+    //state  это то состояние которое будет отдавать сам Reducer
+    // action - какое конкретное действие будет применяться к этому состоянию state.   !!!action - это всегда объект.
     switch (action.type) {
         case 'INC1':
             return {...state, count1: state.count1 + 1}
@@ -19,6 +21,14 @@ const reducer = (state, action) => {
 }
 const App = () => {
     const [state, dispatch] = useReducer(reducer, {count1: 0, count2:0});
+    //Хук useReducer это усовершенствованный useState потому что он не только может сохраниять какие то состояния. Но при помощи его
+    //можно совершать какие то действия над этим состоянием.
+    //state - состояние (Значения)
+    //dispatch функция для отправки action в Reucer там она обработаетьс и в завимости от type будет измененно состояние.
+
+    //Первый параметр это дефолтные значения.
+    //Второй параметр это функция reducer где прописанна ллогика реагирование на action. В зависмости от переданного type
+
     return (
         <div>
             <div>{state.count1}</div>
