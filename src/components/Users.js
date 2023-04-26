@@ -5,6 +5,9 @@ import {User} from "./User";
 class Users extends Component {
     constructor(props) {
         super(props);
+        //вызываеться констуктор родителя при пмомщи super
+        //super Обезательно вызвать самой первой потому что функция super ответственная за создания
+        // ключевого слово this в классе наследники.
         this.state = {
             users: [],
         }
