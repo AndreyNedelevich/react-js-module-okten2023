@@ -9,7 +9,7 @@ class User extends Component{
         const {id, name, email} = this.props.user;
         return(
             <div>
-                <div>id: {id}</div>
+                <div>id:  {id}</div>
                 <div>name: {name}</div>
                 <div>email: {email}</div>
             </div>
