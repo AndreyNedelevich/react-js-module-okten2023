@@ -32,6 +32,7 @@ const CarForm = () => {
         dispatch(carActions.setTrigger())
         reset()
         dispatch(carActions.setCarForUpdate(null))
+
     }
 
     return (
