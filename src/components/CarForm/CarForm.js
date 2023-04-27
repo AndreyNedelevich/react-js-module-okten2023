@@ -8,6 +8,8 @@ import {carActions} from "../../reducers/car.reducer";
 
 const CarForm = () => {
     const [{carForUpdate}, dispatch] = useAppReducer(state=>state.cars);
+    console.log(useAppReducer(state=>state.cars))
+
     const {register, handleSubmit, reset, formState: {errors, isValid}, setValue} = useForm({
         mode: 'all',
         resolver: joiResolver(carValidator)
