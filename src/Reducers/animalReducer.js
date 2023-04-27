@@ -12,24 +12,29 @@ const animalActions = {
     RemoveDog:(id)=>({type:animalActionTypes.RemoveDog, payload:id}),
     RemoveCat:(id)=>({type:animalActionTypes.RemoveCat, payload:id}),
 }
+
 const animalInitialState = {
     dogs:[],
     cats:[]
 }
+
 const animalReducer = (state, action) => {
     switch (action.type) {
         case animalActionTypes.AddDog:
-            return {...state, dogs: action.payload}
+            const dog = action.payload;
+            dog.id=state.dogs.length+1;
+            return {...state, dogs:[...state.dogs, dog]}
         case animalActionTypes.AddCat:
-            return {...state, cats: action.payload}
-        case animalActionTypes.RemoveDog:{
-        let updatedItems =    state.dogs.filter((item) => item.id !== action.id)
-            return {...state, dogs: updatedItems}
-        }
-            case animalActionTypes.RemoveCat:{
-            let updatedItems =    state.cats.filter((item) => item.id !== action.id)
-            return {...state, dogs: updatedItems}
-        }
+            const cat = action.payload;
+            cat.id=state.cats.length+1;
+            return {...state, cats:[...state.cats, cat]}
+        case animalActionTypes.RemoveDog:
+        let updatedItemDog =    state.dogs.filter((item) => item.id !== action.payload)
+            return {...state, dogs: updatedItemDog}
+            case animalActionTypes.RemoveCat:
+            let updatedItemCat =    state.cats.filter((item) => item.id !== action.payload)
+            return {...state, cats: updatedItemCat}
+
         default:
             return state
     }

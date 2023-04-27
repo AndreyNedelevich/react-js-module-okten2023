@@ -1,62 +1,63 @@
-import React, {useContext} from 'react';
+import React from 'react';
 import MyInput from "../../UI/MyInput/MyInput";
 import MyButton from "../../UI/MyButton/MyButton";
 import {useAppReducer} from "../../hooks/useAppReducer";
 import {animalActions} from "../../Reducers/animalReducer";
-import {StateContext} from "../../store/Provider";
 import {useState} from "react";
 
 
 const FormNewAnimal = () => {
 
-    // const [, dispatche] = useAppReducer(state => state.animals)
+    const [arrays, dispatche] = useAppReducer(state => state.catDogs)
 
-    const ctx=useContext(StateContext);
-    console.log(ctx)
-
-    // console.log(useAppReducer(state => state.animals))
-
-    const [state, setState] = useState({
-        inputCat: "",
-        inputDog: "",
-    });
+    const [stateCat, setStateCat] = useState({catName:''});
+    const [stateDog, setStateDog] = useState({dogName:''});
 
 
-    const save = (e) => {
+    const saveCat = (e) => {
         e.preventDefault()
-        if (state.inputCat !== "") {
-            // dispatche(animalActions.AddCat(state.inputCat))
-            console.log(state.inputCat);
-            // setState(state.inputCat)
+        if(stateCat.catName.trim() !== ''){
+            dispatche(animalActions.AddCat(stateCat))
+            setStateCat({catName:''})
         }
-        if (state.inputDog !== "") {
-            // dispatche(animalActions.AddCat(state.inputDog))
-            console.log(state.inputDog);
-        }
-        setState({
-            inputCat: "",
-            inputDog: ""
-        })
+
     }
 
+    const saveDog = (e) => {
+        e.preventDefault()
+        if(stateDog.dogName.trim()!==''){
+            dispatche(animalActions.AddDog(stateDog))
+        }
+        console.log(arrays);
+        setStateDog( {dogName:''})
+    }
+
+
+
     return (
-        <form onSubmit={save}>
+        <div className='wrapper'>
+        <form onSubmit={saveCat}>
             <MyInput
                 type="text"
                 label="Add Cat:"
-                value={state.inputCat}
+                value={stateCat.catName}
                 id="cat"
-                onChange={(e) => setState({...state, inputCat: e.target.value})}
+                onChange={(e) => setStateCat(  {catName: e.target.value})}
             />
             <MyButton>Save</MyButton>
+            </form>
+
+            <form onSubmit={saveDog}>
             <MyInput
                 type="text"
                 label="Add Dog:"
-                value={state.inputDog}
-                onChange={(e) => setState({...state, inputDog: e.target.value})}
+                value={stateDog.dogName}
+                id='dog'
+                onChange={(e) => setStateDog( {dogName: e.target.value})}
             />
             <MyButton>Save</MyButton>
         </form>
+        </div>
     );
 };
 

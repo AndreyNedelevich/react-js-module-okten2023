@@ -1,0 +1,27 @@
+.wrapper{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    margin-top: 25px;
+    margin-left: 20px;
+    border: 1.5px solid black;
+    width: 400px;
+    padding: 10px;
+}
+.wrapper>form{
+    margin-top: 5px;
+
+}
+
+.container{
+    display: flex;
+    margin-top: 25px;
+    margin-left: 20px;
+}
+
+.block{
+    margin-left:180px;
+    width: 250px;
+}
