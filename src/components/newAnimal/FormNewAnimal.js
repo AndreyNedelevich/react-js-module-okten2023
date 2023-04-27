@@ -1,14 +1,20 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import MyInput from "../../UI/MyInput/MyInput";
 import MyButton from "../../UI/MyButton/MyButton";
 import {useAppReducer} from "../../hooks/useAppReducer";
 import {animalActions} from "../../Reducers/animalReducer";
+import {StateContext} from "../../store/Provider";
 import {useState} from "react";
 
 
 const FormNewAnimal = () => {
 
-    const [state2, dispatche] = useAppReducer(state => state.animals)
+    // const [, dispatche] = useAppReducer(state => state.animals)
+
+    const ctx=useContext(StateContext);
+    console.log(ctx)
+
+    // console.log(useAppReducer(state => state.animals))
 
     const [state, setState] = useState({
         inputCat: "",
@@ -16,14 +22,15 @@ const FormNewAnimal = () => {
     });
 
 
-    const save = (item) => {
+    const save = (e) => {
+        e.preventDefault()
         if (state.inputCat !== "") {
-            dispatche(animalActions.AddCat(state.inputCat))
+            // dispatche(animalActions.AddCat(state.inputCat))
             console.log(state.inputCat);
-            setState(state.inputCat)
+            // setState(state.inputCat)
         }
         if (state.inputDog !== "") {
-            dispatche(animalActions.AddCat(state.inputDog))
+            // dispatche(animalActions.AddCat(state.inputDog))
             console.log(state.inputDog);
         }
         setState({
@@ -37,7 +44,7 @@ const FormNewAnimal = () => {
             <MyInput
                 type="text"
                 label="Add Cat:"
-                value={state}
+                value={state.inputCat}
                 id="cat"
                 onChange={(e) => setState({...state, inputCat: e.target.value})}
             />
@@ -45,7 +52,7 @@ const FormNewAnimal = () => {
             <MyInput
                 type="text"
                 label="Add Dog:"
-                value={state}
+                value={state.inputDog}
                 onChange={(e) => setState({...state, inputDog: e.target.value})}
             />
             <MyButton>Save</MyButton>

@@ -3,20 +3,18 @@ const animalActionTypes = {
     AddCat: 'AddCat',
     RemoveDog: 'RemoveDog',
     RemoveCat: 'RemoveCat',
-    TRIGGER: 'TRIGGER'
 }
+
 
 const animalActions = {
     AddDog:(dog)=>({type:animalActionTypes.AddDog, payload:dog}),
     AddCat:(cat)=>({type:animalActionTypes.AddCat, payload:cat}),
     RemoveDog:(id)=>({type:animalActionTypes.RemoveDog, payload:id}),
     RemoveCat:(id)=>({type:animalActionTypes.RemoveCat, payload:id}),
-    setTrigger:()=>({type:animalActionTypes.TRIGGER}),
 }
 const animalInitialState = {
-    cats: [],
     dogs:[],
-    trigger: null
+    cats:[]
 }
 const animalReducer = (state, action) => {
     switch (action.type) {
@@ -32,8 +30,6 @@ const animalReducer = (state, action) => {
             let updatedItems =    state.cats.filter((item) => item.id !== action.id)
             return {...state, dogs: updatedItems}
         }
-        case animalActionTypes.TRIGGER:
-            return {...state, trigger: !state.trigger}
         default:
             return state
     }

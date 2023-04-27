@@ -2,7 +2,6 @@ import React from "react";
 
 
 const MyInput = (props) => {
-    console.log(props);
     return (
         <React.Fragment>
             <label htmlFor={props.id}>{props.label}</label>
