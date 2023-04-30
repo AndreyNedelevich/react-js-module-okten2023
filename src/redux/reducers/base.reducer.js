@@ -8,8 +8,6 @@ export const baseReducer = (state = 0, action) => {
             return 0;
         default:
             return state;
-
-
     }
 
 }
