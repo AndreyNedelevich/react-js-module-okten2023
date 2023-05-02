@@ -1,9 +1,9 @@
 import {axiosServicePlaceholder} from "./axiose.service";
-import {urlsPlaseholderApi} from "../constans/urls";
+import { urlsPlaceholderApi} from "../constans/urls";
 
 const userService = {
-    getAll: ()=> axiosServicePlaceholder.get(urlsPlaseholderApi.users),
-    getByIdUser: (id)=>axiosServicePlaceholder.get(urlsPlaseholderApi.getByIDUser(id)),
+    getAll:  () =>    axiosServicePlaceholder.get(urlsPlaceholderApi.users),
+    getByIdUser: (id)=>axiosServicePlaceholder.get(urlsPlaceholderApi.getByIDUser(id)),
     // create: (user)=> axiosServicePlaceholder.post(urlsPlaseholderApi.users, user)
 }
 

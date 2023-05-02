@@ -1,9 +1,17 @@
 import React from 'react';
 
-const Error = () => {
+const Error = (error) => {
+
+    let content = 'Вы перешли на несуществующую старницу';
+
+    if (error) {
+        content = 'Что то пошло не так!!!'
+    }
+
+
     return (
         <div>
-            <h1 style={{color: "red", textAlign: "center"}}>Вы перешли на несуществующую старницу</h1>
+            <h1 style={{color: "red", textAlign: "center"}}>{content}</h1>
         </div>
     );
 };

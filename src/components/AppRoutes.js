@@ -8,26 +8,35 @@ import AlbomsPage from "../pages/AlbomsPage";
 import Error from "../pages/Error";
 import TodosPage from "../pages/TodosPage";
 import CarsPage from "../pages/CarsPage";
+import Login from "./Login/Login";
+
 
 const AppRoutes = () => {
     // const reducersAction = useSelector(state=>state.placeholderReducer)
-   const allState =  useSelector(state=>state.placeholderReducer)
-    const dispatchFunction = useDispatch();
+   const isLoggedIn =  useSelector(state=>state.logginReducer.isUserLoggedIn)
+    // const dispatchFunction = useDispatch();
 
-    console.log(allState.isUserLoggedIn);
+
+
 
 
     return (
-        <Routes>
-            <Route  path="/users" element={<UsersPage/>}/>
-            <Route  path="/posts" element={<PostsPage/>}/>
-            <Route  path="/comments" element={<CommentPage/>}/>
-            <Route  path="/todos" element={<TodosPage/>}/>
-            <Route  path="/alboms" element={<AlbomsPage/>}/>
-            <Route  path="/cars" element={<CarsPage/>}/>
-            <Route  path="/error" element={<Error/>}/>
-            <Route path="/*" element={<Navigate to="/users" replace/>}/>
-        </Routes>
+            isLoggedIn?
+    <Routes>
+        <Route  path="/users" element={<UsersPage/>}/>
+        <Route  path="/posts" element={<PostsPage/>}/>
+        <Route  path="/comments" element={<CommentPage/>}/>
+        <Route  path="/todos" element={<TodosPage/>}/>
+        <Route  path="/alboms" element={<AlbomsPage/>}/>
+        <Route  path="/cars" element={<CarsPage/>}/>
+        <Route  path="/error" element={<Error/>}/>
+        <Route path="/*" element={<Navigate to="/users" replace/>}/>
+    </Routes>
+:
+    <Routes>
+        <Route exact path="/login" element={<Login/>}/>
+        <Route path="/*" element={<Navigate to="/login" replace/>}/>
+    </Routes>
     );
 };
 

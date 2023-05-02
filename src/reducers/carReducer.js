@@ -29,6 +29,5 @@ const carReducer = (state=carInitialState, action) => {
 
 export {
     carActions,
-    carInitialState,
     carReducer
 }

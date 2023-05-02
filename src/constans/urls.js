@@ -6,15 +6,14 @@ const comments='/comments'
 const alboms='/alboms'
 const todos='/todos'
 const users='/users'
-
 const cars = '/cars'
 
-const urlsPlaseholderApi = {
+const urlsPlaceholderApi = {
     posts,
     getByidPost: (id) => `${posts}/${id}`,
     comments,
     getByidComment: (id) => `${comments}/${id}`,
-    users,
+    users:'/users',
     getByIDUser(id){return `${users}/${id}`},
     alboms,
     todos,
@@ -34,5 +33,5 @@ export {
     basePlaseholderUrl,
     baseCarsUrl,
     urlsCarsApi,
-    urlsPlaseholderApi
+    urlsPlaceholderApi
 }

@@ -2,20 +2,24 @@ import React from 'react';
 import Input from "../UI/Input/Input";
 import Button from "../UI/Button/Button";
 import style from "./login.module.css"
-import {useDispatch, useSelector} from "react-redux";
-import {placeholderActions} from "../../reducers/placeholder.reducer";
+import {useDispatch} from "react-redux";
+import {logginActions} from "../../reducers/logginReducers";
+
 
 
 const Login = () => {
 
-   const dispatchFanction =  useDispatch()
+   const dispatch =  useDispatch()
+
+
 
 
     const login = event => {
         event.preventDefault();
-        dispatchFanction(placeholderActions.changeIsUserLoggedIn(true));
+        dispatch(logginActions.changeIsUserLoggedIn(true));
         localStorage.setItem('auth', 'true')
     }
+
 
 
 

@@ -1,8 +1,8 @@
 import {axiosServicePlaceholder} from "./axiose.service";
-import {urlsPlaseholderApi} from "../constans/urls";
+import {urlsPlaceholderApi} from "../constans/urls";
 
 const albomService = {
-    getAll: ()=> axiosServicePlaceholder.get(urlsPlaseholderApi.albom),
+    getAll: ()=> axiosServicePlaceholder.get(urlsPlaceholderApi.albom),
 }
 
 export {

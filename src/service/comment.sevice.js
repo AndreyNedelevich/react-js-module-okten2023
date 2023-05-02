@@ -1,10 +1,10 @@
 import {axiosServicePlaceholder} from "./axiose.service";
-import {urlsPlaseholderApi} from "../constans/urls";
+import {urlsPlaceholderApi} from "../constans/urls";
 
 
 const commentService = {
-    getAll:()=>axiosServicePlaceholder.get(urlsPlaseholderApi.comments),
-    getByIdComment: (id)=>axiosServicePlaceholder.get(urlsPlaseholderApi.getByidComment(id)),
+    getAll:()=>axiosServicePlaceholder.get(urlsPlaceholderApi.comments),
+    getByIdComment: (id)=>axiosServicePlaceholder.get(urlsPlaceholderApi.getByidComment(id)),
 }
 
 export {
