@@ -2,11 +2,12 @@ import {axiosServicePlaceholder} from "./axiose.service";
 import {urlsPlaceholderApi} from "../constans/urls";
 
 
-const commentService = {
-    getAll:()=>axiosServicePlaceholder.get(urlsPlaceholderApi.comments),
+const postService = {
+    getAll:()=>axiosServicePlaceholder.get(urlsPlaceholderApi.posts),
     getByidPost: (id)=>axiosServicePlaceholder.get(urlsPlaceholderApi.getByidPost(id)),
+    getByIdPostsUser:(id)=>axiosServicePlaceholder.get(urlsPlaceholderApi.getPostsByIdUser(id)),
 }
 
 export {
-    commentService
+    postService
 }

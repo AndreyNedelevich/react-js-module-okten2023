@@ -28,7 +28,7 @@ const NavBar = () => {
             <NavLink to={'users'}>Users</NavLink>
             <NavLink to={'posts'}>Posts</NavLink>
             <NavLink to={'comments'}>Comments</NavLink>
-            <NavLink to={'alboms'}>Alboms</NavLink>
+            <NavLink to={'albums'}>Albums</NavLink>
             <NavLink to={'todos'}>Todos</NavLink>
             <NavLink to={'cars'}>Cars</NavLink>
             <Button onClick={logout}>Выйти</Button>

@@ -1,33 +1,42 @@
 import React from 'react';
-import {useSelector,useDispatch} from "react-redux";
+import {useSelector} from "react-redux";
 import {Routes,Route,Navigate} from "react-router-dom";
 import UsersPage from "../pages/UsersPage";
 import PostsPage from "../pages/PostsPage";
 import CommentPage from "../pages/CommentPage";
-import AlbomsPage from "../pages/AlbomsPage";
+import AlbumsPage from "../pages/AlbumsPage";
 import Error from "../pages/Error";
 import TodosPage from "../pages/TodosPage";
 import CarsPage from "../pages/CarsPage";
 import Login from "./Login/Login";
+import UserDetails from "./Users/UserDetails";
+import PostDetails from "./Posts/PostDetails";
+import {PostInform} from "./Comments/PostInform";
+import PostidPage from "../pages/PostidPage";
 
 
 const AppRoutes = () => {
-    // const reducersAction = useSelector(state=>state.placeholderReducer)
+
    const isLoggedIn =  useSelector(state=>state.logginReducer.isUserLoggedIn)
-    // const dispatchFunction = useDispatch();
-
-
 
 
 
     return (
             isLoggedIn?
     <Routes>
-        <Route  path="/users" element={<UsersPage/>}/>
-        <Route  path="/posts" element={<PostsPage/>}/>
-        <Route  path="/comments" element={<CommentPage/>}/>
+        <Route  path="/users" element={<UsersPage/>}>
+            <Route path={':id'} element={<UserDetails/>}/>
+        </Route>
+        <Route  path="/posts" element={<PostsPage/>}>
+            <Route path={':id'} element={<PostDetails/>} />
+        </Route>
+        <Route  path="/users/:id/posts" element={<PostidPage/>}/>
+        <Route  path="/posts/:id/comments" element={<PostidPage/>}/>
+        <Route  path="/comments" element={<CommentPage/>}>
+            <Route path={':postId'} element={<PostInform/>}/>
+        </Route>
         <Route  path="/todos" element={<TodosPage/>}/>
-        <Route  path="/alboms" element={<AlbomsPage/>}/>
+        <Route  path="/albums" element={<AlbumsPage/>}/>
         <Route  path="/cars" element={<CarsPage/>}/>
         <Route  path="/error" element={<Error/>}/>
         <Route path="/*" element={<Navigate to="/users" replace/>}/>

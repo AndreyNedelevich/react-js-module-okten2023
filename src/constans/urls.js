@@ -1,9 +1,9 @@
-const basePlaseholderUrl = 'https://jsonplaceholder.typicode.com'
+const basePlaceholderUrl = 'https://jsonplaceholder.typicode.com'
 const baseCarsUrl = 'http://owu.linkpc.net/carsAPI/v1'
 
 const posts = '/posts'
 const comments='/comments'
-const alboms='/alboms'
+const albums='/albums'
 const todos='/todos'
 const users='/users'
 const cars = '/cars'
@@ -13,9 +13,11 @@ const urlsPlaceholderApi = {
     getByidPost: (id) => `${posts}/${id}`,
     comments,
     getByidComment: (id) => `${comments}/${id}`,
-    users:'/users',
+    getCommentsByIdPost(id){return `${posts}/${id}${comments}`},
+    users,
     getByIDUser(id){return `${users}/${id}`},
-    alboms,
+    getPostsByIdUser(id){return `${users}/${id}${posts}`},
+    albums,
     todos,
 }
 
@@ -30,7 +32,7 @@ const urlsCarsApi={
 
 
 export {
-    basePlaseholderUrl,
+    basePlaceholderUrl,
     baseCarsUrl,
     urlsCarsApi,
     urlsPlaceholderApi

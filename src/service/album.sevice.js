@@ -1,10 +1,10 @@
 import {axiosServicePlaceholder} from "./axiose.service";
 import {urlsPlaceholderApi} from "../constans/urls";
 
-const albomService = {
-    getAll: ()=> axiosServicePlaceholder.get(urlsPlaceholderApi.albom),
+const albumService = {
+    getAll: ()=> axiosServicePlaceholder.get(urlsPlaceholderApi.albums),
 }
 
 export {
-    albomService
+    albumService
 }

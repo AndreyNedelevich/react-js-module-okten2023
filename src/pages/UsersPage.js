@@ -5,35 +5,43 @@ import {userService} from "../service/user.sevice";
 import {placeholderActions} from "../reducers/placeholder.reducer";
 import {useDispatch, useSelector} from "react-redux";
 import Error from "./Error";
+import Loader from "../components/Loader/Loader";
+import {Outlet} from "react-router-dom";
+
 
 const UsersPage = () => {
 
     const dispatch = useDispatch()
     const arrUsers = useSelector(state => state.placeholderReducer.users)
 
-    // const [fetch, isLoading, ErrorMessage] = useFetching(
-    //     async () => {
-    //     userService.getAll().then(value =>value.data).then(value =>dispatch(placeholderActions.setAllUsers(value)))
-    //     }
-    // );
+    const [fetch, isLoading, ErrorMessage] = useFetching(
+        async () => {
+            const response = await userService.getAll();
+            dispatch(placeholderActions.setAllUsers(response.data));
+        }
+    );
 
 
     useEffect(() => {
-        userService.getAll().then(value =>value.data).then(value =>dispatch(placeholderActions.setAllUsers(value)))
+        fetch()
     }, []);
 
 
     return (
         <div>
+            <Outlet/>
+
             <h1>Users</h1>
-            {/*{isLoading &&*/}
+            {isLoading ?
+                <Loader/>
+                :
                 <React.Fragment>
-                    {/*{ErrorMessage ?*/}
-                    {/*    <Error error={Error}/> :*/}
+                    {ErrorMessage ?
+                        <Error error={ErrorMessage}/> :
                         <Users users={arrUsers}/>
-                    {/*}*/}
+                    }
                 </React.Fragment>
-            {/*}*/}
+            }
         </div>
     );
 };

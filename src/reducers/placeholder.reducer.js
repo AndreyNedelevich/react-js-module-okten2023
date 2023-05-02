@@ -4,37 +4,37 @@ const actionTypes={
     set_AllPosts:'set_AllPosts',
     set_AllComments:'set_AllComments',
     set_AllTodos:'set_AllTodos',
-    set_AllAlboms:'set_AllAlboms',
-    set_User:'set_User',
+    set_AllAlbums:'set_AllAlbums',
     set_Post:'set_Post',
-    set_Comment:'set_Comment',
-    error:'change_IsLoading',
+
+    set_PostsByUser:'set_PostsByUser',
+    set_CommentsByPost:'set_CommentsByPost',
 }
 
 
 const placeholderInitialState={
     comments:[],
     posts:[],
-    alboms: [],
+    albums: [],
     todos:[],
     users:[],
-    showCommentById:null,
-    showPostById:null,
-    showUserById:null,
-    isLoading:null,
+    postById:null,
+
+    postsByUser:[],
+   commetsByPost:[],
 }
 
 
 const placeholderActions={
     setAllUsers:(users)=>({type:actionTypes.set_AllUsers,payload:users}),
     set_AllPosts:(posts)=>({type:actionTypes.set_AllPosts,payload:posts}),
-    set_AllAlboms:(alboms)=>({type:actionTypes.set_AllAlboms,payload:alboms}),
-    set_AllTodos:(todos)=>({type:actionTypes.set_AllUsers,payload:todos}),
+    set_AllAlbums:(albums)=>({type:actionTypes.set_AllAlbums,payload:albums}),
+    set_AllTodos:(todos)=>({type:actionTypes.set_AllTodos,payload:todos}),
     set_AllComments:(comments)=>({type:actionTypes.set_AllComments,payload:comments}),
-    set_User:(id)=>({type:actionTypes.set_User,payload:id}),
     set_Post:(post)=>({type:actionTypes.set_Post,payload:post}),
-    set_Comment:(comment)=>({type:actionTypes.set_Comment,payload:comment}),
-    change_IsLoading:(arg)=>({type:actionTypes.change_IsLoading,payload:arg}),
+
+    set_PostsByUser:(postsArr)=>({type:actionTypes.set_PostsByUser,payload:postsArr}),
+    set_CommentByPost:(commentsArr)=>({type:actionTypes.set_CommentsByPost,payload:commentsArr}),
 }
 
 
@@ -47,18 +47,16 @@ const placeholderReducer=(state=placeholderInitialState,action)=>{
             return {...state, posts: action.payload}
         case actionTypes.set_AllComments:
             return {...state, comments: action.payload}
-        case actionTypes.set_AllAlboms:
-            return {...state, alboms: action.payload}
+        case actionTypes.set_AllAlbums:
+            return {...state, albums: action.payload}
         case actionTypes.set_AllTodos:
             return {...state, todos: action.payload}
-        case actionTypes.set_User:
-            return {...state, showUserById: action.payload}
         case actionTypes.set_Post:
-            return {...state, showPostById: action.payload}
-        case actionTypes.set_Comment:
-            return {...state, showCommentById: action.payload}
-        case actionTypes.isLoading:
-            return {...state, change_IsLoading: action.payload}
+            return {...state, postById: action.payload}
+        case actionTypes.set_PostsByUser:
+            return {...state, postsByUser: action.payload}
+        case actionTypes.set_CommentsByPost:
+            return {...state, commetsByPost: action.payload}
         default:
             return state
     }
