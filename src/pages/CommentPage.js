@@ -27,8 +27,9 @@ const CommentsPage = () => {
     }, []);
 
 
+
     return (
-        <div>
+        <div style={{margin: 15}} >
             <Outlet/>
             <h1>Comments</h1>
             {isLoading ?

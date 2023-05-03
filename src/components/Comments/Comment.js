@@ -7,7 +7,7 @@ const Comment = ({comment}) => {
     const {postId, id, name, email, body} = comment
 
     return (
-        <div className='wrapper'>
+        <div >
             <div>id: {id}</div>
             <div>name: {name}</div>
             <div>email: {email}</div>

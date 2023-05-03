@@ -5,7 +5,7 @@ const UserDetails = () => {
 
 
     return (
-        <div className='postInfo'>
+        <div className='block'>
             <h1>Информация о пользователе  {state.name}</h1>
             <div>
                 <div>id: {state.id}</div>

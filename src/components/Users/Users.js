@@ -7,7 +7,7 @@ const Users = ({users}) => {
 
 
     return (
-        <div>
+        <div className='block'>
             {users.map(user=><User key={user.id} user={user}/>)}
         </div>
     );

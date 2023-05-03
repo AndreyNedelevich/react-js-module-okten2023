@@ -12,7 +12,8 @@ import Login from "./Login/Login";
 import UserDetails from "./Users/UserDetails";
 import PostDetails from "./Posts/PostDetails";
 import {PostInform} from "./Comments/PostInform";
-import PostidPage from "../pages/PostidPage";
+import PostByUserPage from "../pages/PostByUserPage";
+import CommentsByPostPage from "../pages/CommentsByPostPage";
 
 
 const AppRoutes = () => {
@@ -30,8 +31,8 @@ const AppRoutes = () => {
         <Route  path="/posts" element={<PostsPage/>}>
             <Route path={':id'} element={<PostDetails/>} />
         </Route>
-        <Route  path="/users/:id/posts" element={<PostidPage/>}/>
-        <Route  path="/posts/:id/comments" element={<PostidPage/>}/>
+        <Route  path="/users/:id/posts" element={<PostByUserPage/>}/>
+        <Route  path="/post/:id/comments" element={<CommentsByPostPage/>}/>
         <Route  path="/comments" element={<CommentPage/>}>
             <Route path={':postId'} element={<PostInform/>}/>
         </Route>

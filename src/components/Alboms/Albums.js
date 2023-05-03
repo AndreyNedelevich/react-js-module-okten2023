@@ -4,7 +4,7 @@ import Album from "./Album";
 const Albums = ({albums}) => {
 
     return (
-        <div>
+        <div className='block'>
             {albums.map((item)=><Album key={item.id} album={item}/>)}
         </div>
     );

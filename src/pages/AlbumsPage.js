@@ -28,7 +28,7 @@ const AlbumsPage = () => {
 
 
     return (
-        <div>
+        <div style={{margin: 15}} >
             <h1>Comments</h1>
             {isLoading ?
                 <Loader/>

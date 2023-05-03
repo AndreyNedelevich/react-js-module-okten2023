@@ -28,7 +28,7 @@ const UsersPage = () => {
 
 
     return (
-        <div>
+        <div style={{margin: 15}} >
             <Outlet/>
 
             <h1>Users</h1>

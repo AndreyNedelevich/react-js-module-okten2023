@@ -5,7 +5,7 @@ const PostDetails = () => {
 
 
     return (
-        <div>
+        <div className='block'>
             <h1>Информация о Посте:  {state.title}</h1>
             <div>
                 <div><strong>id</strong> : {state.id}</div>

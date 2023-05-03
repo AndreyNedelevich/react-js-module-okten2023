@@ -26,7 +26,7 @@ const PostInform = () => {
 
 
     return (
-        <div>
+        <div className='block'>
             {post &&
                 <React.Fragment>
                     {isLoading ?

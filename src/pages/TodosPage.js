@@ -28,7 +28,7 @@ const TodosPage = () => {
 
 
     return (
-        <div>
+        <div style={{margin: 15}} >
             <h1>Todos</h1>
             {isLoading ?
                 <Loader/>

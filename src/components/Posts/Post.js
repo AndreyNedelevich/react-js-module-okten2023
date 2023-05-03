@@ -11,7 +11,7 @@ const Post = ({post}) => {
 
             <button onClick={() => {
                 navigate(post.id.toString(),{state:{...post}});
-            }}>details of post
+            }}>Детали Поста
             </button>
         </div>
     );

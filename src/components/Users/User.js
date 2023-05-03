@@ -11,10 +11,11 @@ const User = ({user}) => {
         <div>
             <div>id: {id}</div>
             <div>name: {name}</div>
-            <button onClick={()=>navigate(`${id}`, {state:{...user}})}>User Details</button>
-            <button onClick={()=>navigate(`${id}/posts`, {state:{...user}})}>Posts Users</button>
+            <button onClick={()=>navigate(`${id}`, {state:{...user}})}>Детали о Пользователе</button>
+            <button onClick={()=>navigate(`${id}/posts`, {state:{...user}})}>Посты Пользователя</button>
         </div>
     );
 };
 
 export {User};
+

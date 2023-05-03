@@ -27,7 +27,7 @@ const PostsPage = () => {
 
 
     return (
-        <div>
+        <div style={{margin: 15}} >
             <Outlet/>
             <h1>Posts</h1>
             {isLoading ?
