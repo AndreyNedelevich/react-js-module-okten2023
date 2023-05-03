@@ -12,6 +12,8 @@ const slice = createSlice({
     reducers: {
         setCharacters: (state, action) => {
             const {results, info: {next, prev}} = action.payload;
+            //Api отдает нам объект в котором есть объект results с персонажами и объект info вутри которого есть поля next, prev мы их
+            // деструктуруем.
             state.characters = results
             state.prevPage = prev
             state.nextPage = next
