@@ -50,7 +50,7 @@ const CommentsByPostPage = () => {
     return (
             <div style={{margin: 15}} >
                 <button onClick={()=>{navigate(-1)}}>Вернуться на предыдущую страницу</button>
-                <h2>Вы открыли открыли комметарии  поста </h2>
+                <h2>Вы открыли комметарии поста </h2>
                 <div className='block'>
                 <h3>"{state.title}"</h3>
                 <h4> {state.body}</h4>
