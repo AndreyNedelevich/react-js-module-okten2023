@@ -1,11 +1,17 @@
-import './App.css';
+import {Navigate, Route, Routes} from "react-router-dom";
 
-function App() {
-  return (
-    <div >
+import {MainLayout} from "./layouts";
+import {CharacterPage} from "./pages";
 
-    </div>
-  );
-}
+const App = () => {
+    return (
+        <Routes>
+            <Route path={'/'} element={<MainLayout/>}>
+                <Route index element={<Navigate to={'characters'}/>}/>
+                <Route path={'characters'} element={<CharacterPage/>}/>
+            </Route>
+        </Routes>
+    );
+};
 
 export default App;
