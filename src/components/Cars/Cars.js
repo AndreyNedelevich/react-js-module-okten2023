@@ -5,7 +5,7 @@ const Cars = ({cars}) => {
 
 
     return (
-        <div>
+        <div className='block'>
             {cars.map(car=><Car key={car.id} car={car}/>)}
         </div>
     );

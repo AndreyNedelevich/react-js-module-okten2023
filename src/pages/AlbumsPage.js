@@ -10,7 +10,7 @@ import Albums from "../components/Alboms/Albums";
 const AlbumsPage = () => {
 
     const dispatch = useDispatch()
-    const arrAlbums = useSelector(state => state.placeholderReducer.albums)
+    const arrAlbums = useSelector(state => state.placeholder.albums)
 
     const [fetch, isLoading, ErrorMessage] = useFetching(
         async () => {

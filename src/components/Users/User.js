@@ -7,6 +7,7 @@ const User = ({user}) => {
     const navigate = useNavigate();
     const {id, name} = user;
 
+
     return (
         <div>
             <div>id: {id}</div>

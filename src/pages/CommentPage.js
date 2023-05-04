@@ -9,10 +9,11 @@ import Comments from "../components/Comments/Comments";
 import {Outlet} from "react-router-dom";
 
 
+
 const CommentsPage = () => {
 
     const dispatch = useDispatch()
-    const arrComments = useSelector(state => state.placeholderReducer.comments)
+    const {comments} = useSelector(state => state.placeholder)
 
     const [fetch, isLoading, ErrorMessage] = useFetching(
         async () => {
@@ -38,7 +39,7 @@ const CommentsPage = () => {
                 <React.Fragment>
                     {ErrorMessage ?
                         <Error error={ErrorMessage}/> :
-                        <Comments comments={arrComments}/>
+                        <Comments comments={comments}/>
                     }
                 </React.Fragment>
             }

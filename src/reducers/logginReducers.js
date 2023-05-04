@@ -1,33 +1,35 @@
-
-const actionsLogTypes={
-    change_IsUserLoggedIn: 'change_IsUserLoggedIn',
-}
+import {createSlice} from "@reduxjs/toolkit";
 
 
-const logginInitialState={
+const initialState={
     isUserLoggedIn: null
 }
 
 
-const logginActions={
-    changeIsUserLoggedIn:(arg)=>({type:actionsLogTypes.change_IsUserLoggedIn,payload:arg })
-}
 
 
+const slice=createSlice({
+    name:'logginSlice',
+    initialState,
+    reducers:{
+        changeIsUserLoggedIn:(state,action)=>{
+            state.isUserLoggedIn=action.payload
+        },
 
-const  logginReducer=(state=logginInitialState,action)=>{
-    switch (action.type){
-        case actionsLogTypes.change_IsUserLoggedIn:
-            console.log(action.payload);
-            return {...state, isUserLoggedIn: action.payload}
-        default:
-            return state
     }
+})
+
+
+
+const {reducer:reducerLoggin,actions}=slice
+
+
+const logginActions={
+    ...actions
 }
-
-
 
 export {
-    logginReducer,
     logginActions,
+    reducerLoggin
 }
+

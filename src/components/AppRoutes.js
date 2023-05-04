@@ -18,7 +18,7 @@ import CommentsByPostPage from "../pages/CommentsByPostPage";
 
 const AppRoutes = () => {
 
-   const isLoggedIn =  useSelector(state=>state.logginReducer.isUserLoggedIn)
+   const isLoggedIn =  useSelector(state=>state.loggin.isUserLoggedIn)
 
 
 

@@ -11,7 +11,7 @@ import {Todos} from "../components/Todos/Todos";
 const TodosPage = () => {
 
     const dispatch = useDispatch()
-    const arrTodos = useSelector(state => state.placeholderReducer.todos)
+    const arrTodos = useSelector(state => state.placeholder.todos)
 
     const [fetch, isLoading, ErrorMessage] = useFetching(
         async () => {

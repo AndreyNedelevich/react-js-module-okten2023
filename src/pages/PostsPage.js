@@ -11,7 +11,7 @@ import {Outlet} from "react-router-dom";
 const PostsPage = () => {
 
     const dispatch = useDispatch()
-    const arrPosts = useSelector(state => state.placeholderReducer.posts)
+    const arrPosts = useSelector(state => state.placeholder.posts)
 
     const [fetch, isLoading, ErrorMessage] = useFetching(
         async () => {

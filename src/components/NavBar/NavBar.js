@@ -1,17 +1,17 @@
 import css from './NavBar.module.css';
 import {NavLink} from "react-router-dom";
 import {useSelector} from "react-redux";
-import {logginActions, logginReducer} from "../../reducers/logginReducers";
+import {logginActions} from "../../reducers/logginReducers";
 import {useDispatch} from "react-redux";
 import React from "react";
 import Button from "../UI/Button/Button";
-import Loader from "../Loader/Loader";
+
 
 const NavBar = () => {
 
   const dispatch =  useDispatch()
 
-   const isLoggedIn =  useSelector(state=>state.logginReducer.isUserLoggedIn)
+   const isLoggedIn =  useSelector(state=>state.loggin.isUserLoggedIn)
 
     const logout = () => {
         dispatch(logginActions.changeIsUserLoggedIn(false));

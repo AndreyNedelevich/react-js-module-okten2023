@@ -15,7 +15,7 @@ const CommentsByPostPage = () => {
     const navigate=useNavigate()
 
     console.log(state);
-    const commentsByPost= useSelector(state => state.placeholderReducer.commetsByPost)
+    const commentsByPost= useSelector(state => state.placeholder.commetsByPost)
 
 
 

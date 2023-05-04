@@ -18,7 +18,7 @@ const  {state} = useLocation()
 
     const dispatch = useDispatch()
 
-    const {postsByUser}= useSelector(state => state.placeholderReducer)
+    const postsByUser= useSelector(state => state.placeholder.postsByUser)
 
 
     const [fetchPostsById, isLoading, error] = useFetching(async (id) => {

@@ -12,12 +12,12 @@ import {Outlet} from "react-router-dom";
 const UsersPage = () => {
 
     const dispatch = useDispatch()
-    const arrUsers = useSelector(state => state.placeholderReducer.users)
+    const {users} = useSelector(state => state.placeholder)
 
     const [fetch, isLoading, ErrorMessage] = useFetching(
         async () => {
             const response = await userService.getAll();
-            dispatch(placeholderActions.setAllUsers(response.data));
+            dispatch(placeholderActions.setAll_Users(response.data));
         }
     );
 
@@ -38,7 +38,7 @@ const UsersPage = () => {
                 <React.Fragment>
                     {ErrorMessage ?
                         <Error error={ErrorMessage}/> :
-                        <Users users={arrUsers}/>
+                        <Users users={users}/>
                     }
                 </React.Fragment>
             }

@@ -8,7 +8,7 @@ import Loader from "../Loader/Loader";
 
 const PostInform = () => {
     const {postId} = useParams();
-    const post = useSelector(state => state.placeholderReducer.postById)
+    const post = useSelector(state => state.placeholder.postById)
     const dispatch = useDispatch()
 
 
