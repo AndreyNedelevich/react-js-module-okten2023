@@ -30,7 +30,6 @@ const NavBar = () => {
             <NavLink to={'comments'}>Comments</NavLink>
             <NavLink to={'albums'}>Albums</NavLink>
             <NavLink to={'todos'}>Todos</NavLink>
-            <NavLink to={'cars'}>Cars</NavLink>
             <Button onClick={logout}>Выйти</Button>
         </React.Fragment>
 }

@@ -7,7 +7,6 @@ import CommentPage from "../pages/CommentPage";
 import AlbumsPage from "../pages/AlbumsPage";
 import Error from "../pages/Error";
 import TodosPage from "../pages/TodosPage";
-import CarsPage from "../pages/CarsPage";
 import Login from "./Login/Login";
 import UserDetails from "./Users/UserDetails";
 import PostDetails from "./Posts/PostDetails";
@@ -38,7 +37,6 @@ const AppRoutes = () => {
         </Route>
         <Route  path="/todos" element={<TodosPage/>}/>
         <Route  path="/albums" element={<AlbumsPage/>}/>
-        <Route  path="/cars" element={<CarsPage/>}/>
         <Route  path="/error" element={<Error/>}/>
         <Route path="/*" element={<Navigate to="/users" replace/>}/>
     </Routes>
