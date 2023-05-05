@@ -26,7 +26,12 @@ const getAll = createAsyncThunk(
     'carSlice/getAll',
     async (_, thunkAPI) => {
         try {
+            // thunkAPI.dispatch()
+            //При помощи метода  dispatch  от  thunkAPI можно выполнить отправку action(функции в reducers) внутри метода AsyncThunk
+
             // console.log(thunkAPI.getState());
+            // Можно достать вcе состояния всего общего state полностью. бъеденный state всех slice
+
             const {data} = await carService.getAll();
             // await new Promise(resolve => setTimeout(resolve, 2000))
             return data
@@ -35,8 +40,9 @@ const getAll = createAsyncThunk(
             // данные запросса.
         } catch (e) {
             return thunkAPI.rejectWithValue(e.response.data)
-            //Внутри функции thunkAPI есть метод rejectWithValue при помощи него оранизовуем обработку ошибки, если будет ошибка
-            // мы ее вытягиваем из поля e.response.data
+            //Внутри функции thunkAPI есть метод rejectWithValue при помощи него оранизовуем обработку ошибки и мы ее посылаем в state (поэтому она появляеться в payload)
+            // что бы далее ее обработать.
+            // мы ее вытягиваем из поля e.response.data и ложим в наш state.
         }
 
     }
@@ -66,6 +72,7 @@ const update = createAsyncThunk(
     }
 )
 
+
 const deleteCar = createAsyncThunk(
     'carSlice/deleteCar',
     async ({id}, thunkAPI) => {
@@ -77,7 +84,7 @@ const deleteCar = createAsyncThunk(
     }
 )
 
-
+//Создание  slice кусочка состояния с функционалом управлени ним.
 const slice = createSlice({
     name: 'carSlice',
     initialState,
@@ -85,6 +92,7 @@ const slice = createSlice({
         setCarForUpdate: (state, action) => {
             state.carForUpdate = action.payload
             console.log(current(state.cars));
+            //При помощи функции  current получаем все значения состояний хранилища или конкретно какой переменной. (cars)
         },
     },
 
@@ -108,14 +116,22 @@ const slice = createSlice({
     // }
 
 // Второй вариант: При помощи Call Beck функции builder.
-    //
+    // Эта функция возвращает builder с addCase который будет выполнен в зависмоти от вызова функции asynkThunk
+    //Внутрь  addCase передаем анонимную функцию ее аргументами будут:
+    //Первый аргумент  Названия  AsyncThunk (getAll) и у него так как это объек есть методы к которым мы обращаемя
+    // 1)fulfilled (код будет выполнен запрос успешен),
+    // 2) pending (код будет выполнен только в момент запросса и остановлен после получения ответа,
+    // 3) rejected (код выполниться если вернеться ошибка)
 
+    //Второй аргумент -анонимная функция в ее аргументы если нужеы можна передавать те же  state, action и работать с ними внутри функции.
     // extraReducers: builder =>
     //     builder
     //         .addCase(getAll.fulfilled, (state, action) => {
     //             state.cars = action.payload
     //             state.loading = false
     //         })
+    //При вызове функции getAll при помощи метода pending из нее  организовуем запуск внутри  кода который будет изменять состояния
+    // в хранилище   isloading  и внутри комопнента где происходит загрузка отобраажть и скрывать какой то индикатор загрузки.
     //         .addCase(getAll.pending, (state) => {
     //             state.loading = true
     //         })
@@ -123,9 +139,17 @@ const slice = createSlice({
     //             state.trigger = !state.trigger
     //             state.loading = false
     //         })
+
+    //При вызове функции create при помощи метода pending из нее  организовуем запуск внутри  кода который будет изменять состояния
+    // в хранилище   isloading  и внутри комопнента где происходит загрузка отобраажть и скрывать какой то индикатор загрузки.
     //         .addCase(create.pending, state => {
     //             state.loading = true
     //         })
+
+    // В данном addCase реализовуем на запуск функции create, если из нее вернеться ошибка то внутри анонимной функции
+    // мы ее помещаем в переменную error. а саму ошибку получаем через action.payload(в него это ошибка приходит при помощи rejectWithValue через блок catch ).
+    // А также дополнительно даже если получаем ошибка то все равно изменяем состояния loading на folse что бы скрыть индикатор загрузки.
+
     //         .addCase(create.rejected, (state, action) => {
     //             state.error = action.payload
     //             state.loading = false
@@ -139,13 +163,25 @@ const slice = createSlice({
             })
             .addCase(update.fulfilled, state => {
                 state.carForUpdate = null
+                //ри обновлении car меняем состояния carForUpdate  снова на null для того что бы изменит имя кнопки и вызов функции.
             })
+            //При использовании метода builder с caLLBack можно использовать один из case под название .addDefaultCase
+            // По сути код в данном блоке будет выполняться всегда даже если не обин  из case не оработал при вызове функции AsyncThunk. Принимает те же параметры что и все остальные case
             // .addDefaultCase((state, action) => {
             //     console.log(action.type);
             // })
+
+            //Подход с .addDefaultCase не совсем удобный есть другой подход addMatcher он позволяет запускать код для
+            //конкретных AsyncThunk. Для работы с ними експортируем их из библиотеки @reduxjs/toolkit сами методы (isFulfilled, isPending, isRejectedWithValue)
+
             .addMatcher(isPending(), (state) => {
+                // Если оставляем аргумент isPending( ) пустым то значит будет отрабатывать для всех AsyncThunk
+                //Если хоти что бы оторабатывал только для конкретных AsyncThunk прописываем их в аргумент isFulfilled(update, create, deleteCar)
                 state.loading = true
                 state.error = null
+
+                //Внутри анонимной функции меняем состояния внутри хранилища. В соответствии с выполнениям того или иного
+                // процесса в примере выше это процесс isPending() процес получения данных по асинхронному запросу на api.
             })
             .addMatcher(isFulfilled(), state => {
                 state.loading = false
@@ -156,6 +192,7 @@ const slice = createSlice({
                 state.loading = false
             })
             .addMatcher(isFulfilled(update, create, deleteCar), state => {
+                //Если хоти что бы оторабатывал только для конкретных AsyncThunk прописываем их в аргумент isFulfilled(update, create, deleteCar)
                 state.trigger = !state.trigger
             })
 });
