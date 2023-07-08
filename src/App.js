@@ -1,16 +1,12 @@
-import {Navigate, Route, Routes} from "react-router-dom";
-
-import {MainLayout} from "./layouts";
-import {CarPage} from "./pages";
+import {UseMemo} from "./components/UseMemo";
+import {UseCallBack} from "./components/UseCallBack";
 
 const App = () => {
     return (
-        <Routes>
-            <Route path={'/'} element={<MainLayout/>}>
-                <Route index element={<Navigate to={'cars'}/>}/>
-                <Route path={'cars'} element={<CarPage/>}/>
-            </Route>
-        </Routes>
+        <div>
+            {/*<UseMemo/>*/}
+            <UseCallBack/>
+        </div>
     );
 };
 
